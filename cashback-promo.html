@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>رموز ترويجية + استرداد نقدي</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0a0a23;
+      color: white;
+      text-align: center;
+    }
+    .tabs {
+      display: flex;
+      justify-content: center;
+      background-color: #111133;
+    }
+    .tab {
+      flex: 1;
+      padding: 15px;
+      cursor: pointer;
+      background-color: #111133;
+      color: white;
+      font-weight: bold;
+      border: none;
+    }
+    .tab.active {
+      background-color: orange;
+      color: black;
+    }
+    .container {
+      padding: 20px;
+    }
+    .card {
+      background-color: #1a1a40;
+      border-radius: 10px;
+      margin: 10px auto;
+      padding: 15px;
+      max-width: 300px;
+      box-shadow: 0 0 10px #000;
+    }
+    .site {
+      font-size: 20px;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    .code {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: yellow;
+    }
+    .btn {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .copy {
+      background-color: dodgerblue;
+      color: white;
+    }
+    .title {
+      font-size: 24px;
+      margin: 20px 0 10px;
+      color: gold;
+    }
+    input, label, textarea {
+      display: block;
+      margin: 10px auto;
+      max-width: 300px;
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      font-size: 16px;
+    }
+    .warning {
+      color: red;
+      margin-top: 15px;
+    }
+    .note {
+      color: #ffcc00;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="tabs">
+    <button class="tab" id="promoTab" onclick="showTab('promo')">الرموز الترويجية</button>
+    <button class="tab active" id="cashbackTab" onclick="showTab('cashback')">🥰 الاسترداد النقدي</button>
+  </div>
+
+  <div id="promo" class="container" style="display: none;">
+    <div class="card"><div class="site">1xbet</div><div class="code">Goo13</div><button class="btn copy" onclick="copyToClipboard('Goo13')">نسخ 📋</button></div>
+    <div class="card"><div class="site">1win</div><div class="code">Gik12</div><button class="btn copy" onclick="copyToClipboard('Gik12')">نسخ 📋</button></div>
+    <div class="card"><div class="site">Gooobet</div><div class="code">Goo14</div><button class="btn copy" onclick="copyToClipboard('Goo14')">نسخ 📋</button></div>
+    <div class="card"><div class="site">win win</div><div class="code">win_16491</div><button class="btn copy" onclick="copyToClipboard('win_16491')">نسخ 📋</button></div>
+    <div class="card"><div class="site">Paripulse</div><div class="code">pa_23215</div><button class="btn copy" onclick="copyToClipboard('pa_23215')">نسخ 📋</button></div>
+    <div class="card"><div class="site">Linebet</div><div class="code">max2</div><button class="btn copy" onclick="copyToClipboard('max2')">نسخ 📋</button></div>
+    <div class="card"><div class="site">Melbet</div><div class="code">ml_1359265</div><button class="btn copy" onclick="copyToClipboard('ml_1359265')">نسخ 📋</button></div>
+    <div class="card"><div class="site">888 STARZ</div><div class="code">SGH40</div><button class="btn copy" onclick="copyToClipboard('SGH40')">نسخ 📋</button></div>
+    <div class="card"><div class="site">Betwinner</div><div class="code">FGH50</div><button class="btn copy" onclick="copyToClipboard('FGH50')">نسخ 📋</button></div>
+    <div class="card"><div class="site">Megapari</div><div class="code">m_79533</div><button class="btn copy" onclick="copyToClipboard('m_79533')">نسخ 📋</button></div>
+    <div class="card"><div class="site">Bet22</div><div class="code">DD50</div><button class="btn copy" onclick="copyToClipboard('DD50')">نسخ 📋</button></div>
+  </div>
+
+  <div id="cashback" class="container">
+    <p class="title">استرداد نقدي 10%</p>
+    <p>صورة سجل السحب و الإيداع:</p>
+    <input type="file" accept="image/*" onchange="checkFile(this)">
+
+    <label for="user">ID المستخدم:</label>
+    <input type="text" id="user" placeholder="أدخل ID المستخدم">
+
+    <label for="telegram">اسم مستخدم تيليجرام للتواصل:</label>
+    <input type="text" id="telegram" placeholder="مثال: @username">
+
+    <button class="btn" style="background-color: orange;" onclick="showTab('promo')">↩ الرجوع للرئيسية</button>
+    <button class="btn" style="background-color: dodgerblue;">📤 إرسال البيانات</button>
+
+    <p class="note">💡 ملاحظة: تأكد من أن الحساب أي الـ ID مسجل باسمك.</p>
+    <p class="warning">❗ يرجى عدم إرسال نفس الصورة مرتين، أي محاولة تكرار قد تؤدي إلى حظر الطلب.</p>
+  </div>
+
+  <script>
+    function showTab(tabId) {
+      document.getElementById("promo").style.display = "none";
+      document.getElementById("cashback").style.display = "none";
+      document.getElementById(tabId).style.display = "block";
+
+      var tabs = document.getElementsByClassName("tab");
+      for (var i = 0; i < tabs.length; i++) {
+        tabs[i].classList.remove("active");
+      }
+      document.getElementById(tabId + "Tab").classList.add("active");
+    }
+
+    function copyToClipboard(text) {
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textarea);
+      alert("تم نسخ الرمز: " + text);
+    }
+
+    let uploadedFiles = new Set();
+    function checkFile(input) {
+      const file = input.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const hash = e.target.result;
+          if (uploadedFiles.has(hash)) {
+            alert("❌ لا يمكن إرسال نفس الصورة مرتين!");
+            input.value = "";
+          } else {
+            uploadedFiles.add(hash);
+          }
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    window.onload = () => showTab('cashback');
+  </script>
+</body>
+</html>
